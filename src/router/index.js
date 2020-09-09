@@ -24,11 +24,6 @@ const routes = [
     name: "Shopping",
     component: () => import("../views/interface/shopping.vue"),
   },
-  {
-    path: "/user",
-    name: "User",
-    component: () => import("../views/interface/User.vue"),
-  },
 ];
 
 const router = new VueRouter({
