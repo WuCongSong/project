@@ -1,7 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -24,6 +23,11 @@ const routes = [
     path: "/shopping",
     name: "Shopping",
     component: () => import("../views/interface/shopping.vue"),
+  },
+  {
+    path: "/user",
+    name: "User",
+    component: () => import("../views/interface/User.vue"),
   },
 ];
 

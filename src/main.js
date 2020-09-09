@@ -1,5 +1,6 @@
 import Vue from "vue";
 import App from "./App.vue";
+import Vuex from "vuex";
 // 引入自定义样式
 import Index from "./assets/css/index.css";
 Vue.use(Index);
@@ -9,10 +10,27 @@ import router from "./router";
 import Vant from "vant";
 import "vant/lib/index.css";
 Vue.use(Vant);
-
+Vue.use(Vuex);
 Vue.config.productionTip = false;
-
+//照片没有出来是因为前缀不对，因此应该加一个过滤器
+Vue.filter("dalImg", (img) => {
+  if (img && img.startsWith("http")) {
+    return img;
+  }
+  return "http://localhost:3009" + img;
+});
+const store = new Vuex.Store({
+  state: {
+    mount: 0,
+  },
+  mutations: {
+    buy(state, step) {
+      state.mount = step;
+    },
+  },
+});
 new Vue({
   router,
+  store,
   render: (h) => h(App),
 }).$mount("#app");
