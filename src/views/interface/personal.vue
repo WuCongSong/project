@@ -1,108 +1,119 @@
 <template>
-  <div class="min">
-    <div style="background:#ffefef;">
-      <div class="header">
-        <router-link :to="{ name: 'Cart-updata' }" class="bag_1">
-          <van-icon name="arrow-left" />
-        </router-link>
-        <router-link :to="{ name: 'Cart-updata' }" class="bag">
-          <van-icon name="weapp-nav" />
-        </router-link>
-      </div>
-      <div class="min-cart">
-        <div class="tou">
-          <van-icon name="smile-o" class="pic" size="60" />
-        </div>
-        <div class="tou-name">
-          <div class="p" style="font-size:24px;margin-top: 20px;">
-            vivo47621...
-          </div>
-          <i><van-icon name="vip-card" />黄金会员</i>
-        </div>
-        <div class="gift">
-          礼包广场
-        </div>
-      </div>
+  <div class="main">
+    <div class="header">
+      <b>购物车</b>
+      <p @click="isShow = !isShow">
+        {{ isShow ? "编辑" : "完成" }}
+      </p>
     </div>
-    <ul class="headlist">
-      <li>
-        <p class="p1">0</p>
-        <i style="font-style: normal;font-size:13px;">优惠劵</i>
-      </li>
-      <i style="margin-top:16px">|</i>
-      <li>
-        <p class="p2">0</p>
-        <i style="font-style: normal; font-size:13px;">换新鼓励金</i>
-      </li>
-      <i style="margin-top:16px">|</i>
-      <li>
-        <p class="p3">20</p>
-        <i style="font-style: normal;font-size:13px;">积分</i>
-      </li>
-    </ul>
-    <p>
-      <i style="font-style: normal;margin-left:18px;">我的订单</i>
-      <i style="font-style: normal;font-size:13px;float: right;"
-        >更多<van-icon name="arrow"
-      /></i>
-    </p>
-    <ul class="headlist">
-      <li>
-        <van-icon name="debit-pay" style="font-size:20px;margin-left:12px;" />
-        <p>代付款</p>
-      </li>
-      <li>
-        <van-icon
-          name="cash-on-deliver"
-          style="font-size:20px;margin-left:12px;"
-        />
-        <p>代收货</p>
-      </li>
-      <li>
-        <van-icon name="other-pay" style="font-size:20px;margin-left:12px;" />
-        <p>代评价</p>
-      </li>
-      <li>
-        <van-icon name="tosend" style="font-size:20px;margin-left:18px;" />
-        <p>退货/退款</p>
-      </li>
-    </ul>
     <ul class="content">
-      <li>
-        <van-icon name="notes-o" style="float:left;margin:18px" />我的回执单<i
-          ><van-icon name="arrow"
-        /></i>
-      </li>
-      <li>
-        <van-icon name="point-gift-o" style="float:left;margin:18px" />我的奖品
-        <i><van-icon name="arrow"/></i>
-      </li>
-      <li>
-        <van-icon
-          name="goods-collect-o"
-          style="float:left;margin:18px"
-        />我的收藏<i><van-icon name="arrow"/></i>
-      </li>
-      <li>
-        <van-icon name="chat-o" style="float:left;margin:18px" />我的评价<i
-          ><van-icon name="arrow"
-        /></i>
-      </li>
-      <li>
-        <van-icon name="bullhorn-o" style="float:left;margin:18px" />我的问答<i
-          ><van-icon name="arrow"
-        /></i>
+      <li v-for="(item, index) in list" :key="index">
+        <div class="cek">
+          <input v-model="item.checked" type="checkbox" />
+        </div>
+        <div class="cart-list">
+          <van-card
+            class="v-cart"
+            :price="item.product.price"
+            :title="item.product.name"
+            :thumb="item.product.coverImg"
+          >
+            <template #footer>
+              <van-button
+                v-show="!isShow"
+                @click="remove(item)"
+                type="danger"
+                size="mini"
+                >删除</van-button
+              >
+              <van-stepper v-model="item.quantity" v-show="isShow" />
+            </template>
+          </van-card>
+        </div>
       </li>
     </ul>
+    <!-- 全选 -->
+    <div>
+      <van-submit-bar
+        :price="sumprice * 100"
+        button-text="去结算"
+        @submit="onSubmit"
+        class="pri"
+      >
+        <van-checkbox v-model="checkAll">全选</van-checkbox>
+      </van-submit-bar>
+    </div>
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import { Icon } from "vant";
-Vue.use(Icon);
+import { Toast } from "vant";
+import { Remove } from "../../serivces/delete";
+import { loadCarts } from "../../serivces/cart";
 
-export default {};
+export default {
+  data() {
+    return {
+      list: [],
+      isShow: true, //显示
+      a: 0,
+    };
+  },
+  created() {
+    loadCarts().then((res) => {
+      // 给商品添加一个checked属性
+      let num = 0;
+      res.data.forEach((v) => {
+        v.checked = true;
+        this.a += v.quantity;
+        // if (v.checked) {
+        //   arr.push(v);
+        // }
+        // console.log(arr);
+        num++;
+      });
+      // console.log(num);
+      localStorage.setItem("num", num);
+      this.$store.commit("buy", this.a);
+      this.list = res.data;
+      // console.log(res.data[0].product);
+    });
+  },
+  computed: {
+    checkAll: {
+      get() {
+        return this.list.every((item) => item.checked);
+      },
+      set(v) {
+        this.list.forEach((item) => (item.checked = v));
+      },
+    },
+    sumprice() {
+      return (
+        this.list
+          .filter((item) => item.checked)
+          //聚合运算
+          .reduce((pre, cur) => {
+            return pre + cur.product.price * cur.quantity;
+          }, 0)
+      );
+    },
+  },
+  methods: {
+    onSubmit() {
+      // setToken ({
+
+      // })
+      this.$router.push({ path: "/result" });
+    },
+    async remove(item) {
+      const res = await Remove(item._id);
+      console.log(res);
+      Toast.success("删除成功");
+      history.go(0);
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -110,113 +121,50 @@ export default {};
   padding: 0;
 }
 .header {
+  height: 60px;
   width: 100%;
-  height: 56px;
+  background-color: #f00056;
+  position: fixed;
+  z-index: 9;
 }
-.bag_1 {
-  width: 30px;
-  height: 56px;
-  line-height: 56px;
+.header b {
   display: block;
   float: left;
-  color: #000;
-  margin-left: 0.2rem;
-  font-size: 1.2rem;
+  line-height: 60px;
+  font-size: 20px;
+  width: 80px;
+  height: 60px;
+  margin-left: 160px;
+  font-family: "宋体";
 }
-.bag {
-  line-height: 56px;
-  width: 30px;
-  height: 56px;
+.header p {
   display: block;
   float: right;
-  color: #000;
-  margin-left: 1.5rem;
-  font-size: 1.2rem;
-}
-.min-cart {
-  height: 112px;
-  width: 100%;
-}
-.tou {
-  height: 112px;
-  width: 112px;
-  float: left;
-  font-size: 60px;
-  line-height: 112px;
-  text-align: center;
-}
-.tou-name {
-  height: 112px;
-  width: 112px;
-  float: left;
-}
-.tou .p {
-  width: 100%;
-  height: 20px;
-}
-.tou i {
-  font-size: 22px;
-}
-.gift {
-  float: right;
-  background-color: red;
-  color: #fff;
-  margin-top: 40px;
-  width: 77px;
-  height: 25px;
-  text-align: center;
-  line-height: 25px;
-  border-top-left-radius: 0.7rem;
-  border-bottom-left-radius: 0.7rem;
-}
-.headlist {
-  display: flex;
-  justify-content: space-around;
-  flex: 1;
-}
-.p1 {
-  font-size: 1.4rem;
-  height: 0.39rem;
-  line-height: 0.39rem;
-  margin-top: 0.55rem;
-  vertical-align: top;
-  color: #000;
-  font-weight: 700;
-  padding-left: 18px;
-}
-.p2 {
-  font-size: 1.4rem;
-  height: 0.39rem;
-  line-height: 0.39rem;
-  margin-top: 0.55rem;
-  vertical-align: top;
-  color: #000;
-  font-weight: 700;
-  padding-left: 30px;
-}
-.p3 {
-  font-size: 1.4rem;
-  height: 0.39rem;
-  line-height: 0.39rem;
-  margin-top: 0.55rem;
-  vertical-align: top;
-  color: #000;
-  font-weight: 700;
-  padding-left: 8px;
+  margin-top: 5px;
+  margin-right: 5px;
+  font-family: "楷体";
 }
 .content {
-  min-height: 100px;
+  margin-bottom: 60px;
+  margin-top: 60px;
+}
+.content li {
+  height: 132px;
   width: 100%;
 }
-.content > li {
-  width: 100%;
-  height: 56px;
-  line-height: 56px;
-  font-size: 18px;
+.cek {
+  height: 5px;
+  width: 3%;
+  float: left;
+  margin-top: 40px;
+  margin-left: 2px;
 }
-.content > li i {
+.cart-list {
+  height: 132px;
+  width: 94%;
   float: right;
-  margin-top: 10px;
-  margin-right: 10px;
+}
+.pri {
+  margin-bottom: 50px;
 }
 </style>

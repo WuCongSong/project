@@ -19,12 +19,28 @@
 </template>
 
 <script>
+// import { loadCarts } from "./services/cart";
+// import { isLogined } from "./utils/auth";
+
 export default {
-  data() {
+  data() { 
     return {
       active: 0,
+      a:0
     };
   },
+  // created() {
+  //   if (isLogined()) {
+  //     loadCarts().then((res) => {
+  //       res.data.forEach((v) => {
+  //         v.checked = true;
+  //         this.a += v.quantity;
+  //       });
+  //       console.log(this.a);
+  //       this.$store.commit("buy", this.a);
+  //     });
+  //   }
+  // },
 };
 </script>
 

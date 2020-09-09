@@ -9,6 +9,11 @@ import router from "./router";
 // 导入vantUi组件
 import Vant from "vant";
 import "vant/lib/index.css";
+import { AddressEdit, Area, Icon } from "vant";
+
+Vue.use(Icon);
+Vue.use(AddressEdit);
+Vue.use(Area);
 Vue.use(Vant);
 Vue.use(Vuex);
 Vue.config.productionTip = false;
