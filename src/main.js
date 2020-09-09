@@ -1,8 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
+
 // 引入自定义样式
-import Index from "./assets/css/index.css";
-Vue.use(Index);
+import "./assets/css/index.css";
 // 导入全局路由
 import router from "./router";
 // 导入vantUi组件
