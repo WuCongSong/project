@@ -85,7 +85,7 @@
         <span>更多场次></span>
       </div>
       <!-- 抢购区展示 -->
-<Mian></Mian>
+  <indexMain />
 <!-- 精品手机区展示 -->
 <van-divider
   :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }"
@@ -109,7 +109,8 @@
 
 <script>
 import Swipe from "./Home/Swipe";
-import Mian from './Home/Mian';
+import indexMain from './Home/mian';
+// import Mian from './Home/main';
 import Mians from './Home/Mians'
 import seller from './Home/seller'
 export default {
@@ -122,7 +123,7 @@ export default {
   },
   components: {
     Swipe,
-    Mian,
+    indexMain,
     Mians,
     seller,
   },
