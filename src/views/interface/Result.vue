@@ -24,7 +24,7 @@
           :thumb="item.product.coverImg"
         >
         </van-card>
-      </li>
+    </li>
     </ul>
     <!-- 优惠券单元格 -->
     <van-coupon-cell

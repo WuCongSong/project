@@ -4,7 +4,7 @@
     <div class="HomeTop">
       <van-nav-bar title="VIVO">
         <template #left>
-          <van-icon name="wap-nav" size="28" />
+          <van-icon name="wap-nav" size="28" @click='btns' />
         </template>
         <template #right>
           <van-icon name="search" size="28" />
@@ -16,9 +16,9 @@
       <Swipe></Swipe>
       <!-- 列表分类 -->
       <div class="mianCenter">
-        <ul class="mianCente">
-          <li>
-            <img
+        <ul class="mianCente" route>
+          <li @click="to">
+            <img 
               src="https://shopstatic.vivo.com.cn/vivoshop/commodity/20180702/20180702200727214479_original.png"
               alt
             />
@@ -84,24 +84,37 @@
         </div>
         <span>更多场次></span>
       </div>
-      <van-grid :border="false" :column-num="3">
-  <van-grid-item>
-    <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-  </van-grid-item>
-  <van-grid-item>
-    <van-image src="https://img.yzcdn.cn/vant/apple-2.jpg" />
-  </van-grid-item>
-  <van-grid-item>
-    <van-image src="https://img.yzcdn.cn/vant/apple-3.jpg" />
-  </van-grid-item>
-</van-grid>
+      <!-- 抢购区展示 -->
+<Mian></Mian>
+<!-- 精品手机区展示 -->
+<van-divider
+  :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }"
+>
+  精品手机
+</van-divider>
+<Mians></Mians>
+
+<van-divider
+  :style="{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px' }"
+>
+  热卖推荐
+</van-divider>
+
+<seller></seller>
+
     </div>
+    
   </div>
 </template>
 
 <script>
 import Swipe from "./Home/Swipe";
+import Mian from './Home/Mian';
+import Mians from './Home/Mians'
+import seller from './Home/seller'
 export default {
+
+
    data() {
     return {
       time: 30 * 60 * 60 * 1000,
@@ -109,7 +122,18 @@ export default {
   },
   components: {
     Swipe,
+    Mian,
+    Mians,
+    seller,
   },
+  methods:{
+    to(){
+      this.$router.push({name:"phoneList"})
+    },
+    btns(){
+      this.$router.push({name:"ListPos"})
+    }
+  }
 };
 </script>
 
@@ -119,9 +143,7 @@ body {
   width: 100%;
   height: 100%;
 }
-html {
-  font-size: 26.67vw;
-}
+
 .HomeTop {
   position: fixed;
   width: 100%;
@@ -150,6 +172,7 @@ html {
   height: 130px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 .mianCenter .mianCente li {
   width: 93px;

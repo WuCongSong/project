@@ -1,0 +1,79 @@
+<template>
+  <div class="actives">
+    <ul class="actida">
+      <li v-for="item in list" :key="item._id">
+        <img :src="item.coverImg" alt />
+        <h3>{{item.name}}</h3>
+        <p>{{item.descriptions}}</p>
+        <span>¥{{item.price}}</span>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import { getData } from "../../../serivces/musik";
+export default {
+  data() {
+    return {
+      list: [],
+    };
+  },
+  created() {
+    getData(4,4).then((res) => {
+      console.log(res.data.products);
+      this.list = res.data.products;
+    });
+  },
+};
+</script>
+
+<style>
+.actida {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  overflow: auto;
+}
+.actida li {
+  width: 160px;
+  height: 298px;
+  padding: 10px 10px 0 10px;
+  margin-bottom: 5px;
+}
+.actida li img {
+  width: 130px;
+  height: 130px;
+  margin: auto;
+}
+.actida li h3 {
+  width: 100%;
+  height: 16px;
+  font-size: 13px;
+  margin: 20px 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding: 0 6px;
+}
+.actida li p {
+  width: 100%;
+  height: 36px;
+  font-size: 13px;
+  margin: 20px 0;
+  padding: 0 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.actida li span {
+  display: block;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+}
+</style>
