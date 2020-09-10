@@ -8,7 +8,7 @@
       <van-tabbar-item icon="point-gift" :to="{ name: 'Ordere' }"
         >热卖</van-tabbar-item
       >
-      <van-tabbar-item icon="shopping-cart" :to="{ name: 'Personal' }"
+      <van-tabbar-item :badge="$store.state.mount" icon="shopping-cart"  :to="{ name: 'Personal' }"
         >购物车</van-tabbar-item
       >
       <van-tabbar-item icon="friends" :to="{ name: 'Shopping' }"

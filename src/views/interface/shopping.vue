@@ -2,10 +2,10 @@
   <div class="min">
     <div style="background:#ffefef;">
       <div class="header">
-        <router-link :to="{ name: 'Cart-updata' }" class="bag_1">
+        <router-link :to="{ name: 'Home' }" class="bag_1">
           <van-icon name="arrow-left" />
         </router-link>
-        <router-link :to="{ name: 'Cart-updata' }" class="bag">
+        <router-link :to="{ name: 'Home' }" class="bag">
           <van-icon name="weapp-nav" />
         </router-link>
       </div>
