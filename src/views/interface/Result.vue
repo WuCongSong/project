@@ -12,7 +12,9 @@
     <div class="addlist">
       <div class="add" @click="address">
         <p style="margin:0;">收货人：<b>张三</b> <b>136****808</b></p>
-        <i style="margin:0;font-size:10px;">浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室</i>
+        <i style="margin:0;font-size:10px;"
+          >浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室</i
+        >
       </div>
 
       <div class="xiao"><van-icon name="arrow" @click="addresslist" /></div>
@@ -28,7 +30,7 @@
           :thumb="item.product.coverImg"
         >
         </van-card>
-    </li>
+      </li>
     </ul>
     <!-- 优惠券单元格 -->
     <van-coupon-cell
@@ -57,7 +59,7 @@
 
 <script>
 import Vue from "vue";
-import { CouponCell, CouponList, } from "vant";
+import { CouponCell, CouponList } from "vant";
 import { loadCarts } from "../../serivces/cart";
 
 Vue.use(CouponCell);
