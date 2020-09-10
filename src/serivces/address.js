@@ -5,13 +5,13 @@ export function addressList() {
 }
 
 export function addressSingle(id) {
-  return get(`http://http://192.168.16.111:3009/api/v1/addresses/${id}`);
+  return get(`http://192.168.16.111:3009/api/v1/addresses/${id}`);
 }
 
 export function addressAdd() {
-  return post("http://http://192.168.16.111:3009/api/v1/addresses");
+  return post("http://192.168.16.111:3009/api/v1/addresses");
 }
 
 export function addressEdit(id) {
-  return put(`http://http://192.168.16.111:3009/api/v1/addresses/${id}`);
+  return put(`http://192.168.16.111:3009/api/v1/addresses/${id}`);
 }
