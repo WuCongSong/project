@@ -10,6 +10,18 @@ const routes = [
     name: "Home",
     component: () => import("../views/interface/Home.vue"),
   },
+  // 登录
+  {
+    path: "/register",
+    name: "Register",
+    component: () => import("../views/interface/Register.vue"),
+  },
+  // 注册
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import("../views/interface/Login.vue"),
+  },
   {
     path: "/phoneList",
     name: "PhoneList",
@@ -82,12 +94,18 @@ const routes = [
     path: "/personal",
     name: "Personal",
     component: () => import("../views/interface/personal.vue"),
+    meta: {
+      needLogin: true,
+    },
   },
   // 个人中心
   {
     path: "/shopping",
     name: "Shopping",
     component: () => import("../views/interface/shopping.vue"),
+    meta: {
+      needLogin: true,
+    },
   },
   {
     path: "/result",
