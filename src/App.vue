@@ -1,11 +1,19 @@
 <template>
   <div id="app">
     <router-view class="mianHome" />
-    <van-tabbar v-model="active" >
-      <van-tabbar-item icon="wap-home" :to="{name:'Home'}">首页</van-tabbar-item>
-      <van-tabbar-item icon="point-gift" :to="{name:'Ordere'}">热卖</van-tabbar-item>
-      <van-tabbar-item icon="shopping-cart" :to="{name:'Personal'}">购物车</van-tabbar-item>
-      <van-tabbar-item icon="friends" :to="{name:'Shopping'}">个人中心</van-tabbar-item>
+    <van-tabbar v-model="active">
+      <van-tabbar-item icon="wap-home" :to="{ name: 'Home' }"
+        >首页</van-tabbar-item
+      >
+      <van-tabbar-item icon="point-gift" :to="{ name: 'Ordere' }"
+        >热卖</van-tabbar-item
+      >
+      <van-tabbar-item icon="shopping-cart" :to="{ name: 'Personal' }"
+        >购物车</van-tabbar-item
+      >
+      <van-tabbar-item icon="friends" :to="{ name: 'Shopping' }"
+        >个人中心</van-tabbar-item
+      >
     </van-tabbar>
   </div>
 </template>
@@ -15,10 +23,10 @@
 // import { isLogined } from "./utils/auth";
 
 export default {
-  data() { 
+  data() {
     return {
       active: 0,
-      a:0
+      a: 0,
     };
   },
   // created() {

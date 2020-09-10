@@ -4,7 +4,7 @@
       <router-link :to="{ name: 'Result' }" class="bag_1">
         <van-icon name="arrow-left" />
       </router-link>
-      <router-link :to="{ name: 'Cart-updata' }" class="bag">
+      <router-link :to="{ name: 'Home' }" class="bag">
         <van-icon name="weapp-nav" />
       </router-link>
     </div>
@@ -65,8 +65,8 @@ export default {
   display: block;
   float: left;
   color: #000;
-  margin-left: 0.2rem;
-  font-size: 1.2rem;
+  /* margin-left: 0.2rem; */
+  font-size: 0.2rem;
 }
 .bag {
   line-height: 56px;
@@ -76,6 +76,6 @@ export default {
   float: right;
   color: #000;
   margin-left: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
 }
 </style>

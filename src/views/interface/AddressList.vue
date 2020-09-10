@@ -84,8 +84,7 @@ export default {
   display: block;
   float: left;
   color: #000;
-  margin-left: 0.2rem;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
 }
 .bag {
   line-height: 56px;
@@ -95,6 +94,6 @@ export default {
   float: right;
   color: #000;
   margin-left: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
 }
 </style>
