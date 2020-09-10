@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <div class="header">
-      <router-link :to="{ name: 'personal' }" class="bag">
+      <router-link :to="{ name: 'Personal' }" class="bag">
         <van-icon name="arrow-left" />
       </router-link>
       <div class="result">结算</div>
