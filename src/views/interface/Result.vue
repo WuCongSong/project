@@ -1,16 +1,20 @@
 <template>
   <div class="main">
     <div class="header">
-      <router-link :to="{ name: 'Cart-updata' }" class="bag">
+      <router-link :to="{ name: 'personal' }" class="bag">
         <van-icon name="arrow-left" />
       </router-link>
       <div class="result">结算</div>
-      <router-link :to="{ name: 'Cart-updata' }" class="bag">
+      <router-link :to="{ name: 'Home' }" class="bag">
         <van-icon name="weapp-nav" />
       </router-link>
     </div>
     <div class="addlist">
-      <div class="add" @click="address">添加收货地址</div>
+      <div class="add" @click="address">
+        <p style="margin:0;">收货人：<b>张三</b> <b>136****808</b></p>
+        <i style="margin:0;font-size:10px;">浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室</i>
+      </div>
+
       <div class="xiao"><van-icon name="arrow" @click="addresslist" /></div>
     </div>
     <p style="font-size:12px;padding-left:10px;">商品清单</p>
@@ -141,7 +145,7 @@ export default {
   float: left;
   color: #000;
   line-height: 56px;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
 }
 .result {
   width: 80%;
@@ -158,11 +162,11 @@ export default {
 }
 .add {
   float: left;
-  margin-left: 0.8rem;
+  margin-left: 0.1rem;
 }
 .xiao {
   float: right;
-  margin-right: 1.5rem;
+  margin-right: 0.1rem;
   color: #e9e7ef;
 }
 .content {

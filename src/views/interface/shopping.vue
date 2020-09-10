@@ -37,7 +37,7 @@
       <i style="margin-top:16px">|</i>
       <li>
         <p class="p3">20</p>
-        <i style="font-style: normal;font-size:14px;">积分</i>
+        <i style="font-style: normal;font-size:14px;margin-left:8px;">积分</i>
       </li>
     </ul>
     <p style="margin:16px 0">
@@ -120,8 +120,8 @@ body {
   display: block;
   float: left;
   color: #000;
-  margin-left: 0.2rem;
-  font-size: 1.2rem;
+  margin-left: 8px;
+  font-size: 0.2rem;
 }
 .bag {
   line-height: 56px;
@@ -131,7 +131,7 @@ body {
   float: right;
   color: #000;
   margin-left: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 0.2rem;
 }
 .min-cart {
   height: 112px;
@@ -176,37 +176,31 @@ body {
   overflow: hidden;
 }
 .p1 {
-  font-size: 1.4rem;
+  font-size: 0.2rem;
   height: 0.39rem;
   line-height: 0.39rem;
-  margin-top: 0.55rem;
   vertical-align: top;
   color: #000;
   font-weight: 700;
   padding-left: 18px;
-  margin-bottom: 20px;
 }
 .p2 {
-  font-size: 1.4rem;
+  font-size: 0.2rem;
   height: 0.39rem;
   line-height: 0.39rem;
-  margin-top: 0.55rem;
-  margin-bottom: 20px;
   vertical-align: top;
   color: #000;
   font-weight: 700;
   padding-left: 28px;
 }
 .p3 {
-  font-size: 1.4rem;
+  font-size: 0.2rem;
   height: 0.39rem;
   line-height: 0.39rem;
-  margin-top: 0.55rem;
   vertical-align: top;
   color: #000;
   font-weight: 700;
   padding-left: 6px;
-  margin-bottom: 20px;
 }
 .content {
   min-height: 100px;

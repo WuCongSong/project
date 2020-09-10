@@ -89,18 +89,18 @@ textarea {
 }
 
 /* 封装好类名 */
-/* .border_none {
+.border_none {
   border: none !important;
 }
 
 .bg_none {
   background: none !important;
-} */
+}
 
 /* 单行文本溢出省略号显示 */
-/* .text_ellipsis {
+.text_ellipsis {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-} */
+}
 /* html{font-size: 26.67vw;} */
