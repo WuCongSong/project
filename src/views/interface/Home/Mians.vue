@@ -29,7 +29,7 @@ export default {
         }
     },
      created() {
-    getData(1, 12).then((res) => {
+    getData(1, 20).then((res) => {
       console.log(res.data.products);
       this.list = res.data.products;
       

@@ -22,7 +22,7 @@ export default {
     };
   },
   created() {
-    getData(1, 20).then((res) => {
+    getData().then((res) => {
       this.list = res.data.products;
     });
   },

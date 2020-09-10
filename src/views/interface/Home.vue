@@ -129,7 +129,7 @@ export default {
   },
   methods:{
     to(){
-      this.$router.push({name:"phoneList"})
+      this.$router.push({name:"PhoneList"})
     },
     btns(){
       this.$router.push({name:"ListPos"})

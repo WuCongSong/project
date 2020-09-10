@@ -10,6 +10,11 @@ const routes = [
     name: "Home",
     component: () => import("../views/interface/Home.vue"),
   },
+  {
+    path: "/phoneList",
+    name: "PhoneList",
+    component: () => import("../views/list/phoneList.vue"),
+  },
   // 首页左上角列表页
   {
     path: "/listpos",
